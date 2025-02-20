@@ -1,0 +1,8 @@
+---
+name: demangle
+type: tool
+input_type: source
+output_type: source
+description: hello
+command: test
+---

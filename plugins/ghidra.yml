@@ -1,0 +1,8 @@
+---
+name: ghidra
+type: decompiler
+
+functions:
+  - name: decompiler
+    
+---
