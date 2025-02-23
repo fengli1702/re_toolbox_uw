@@ -2,10 +2,10 @@ use std::fmt::Display;
 use std::fs::File;
 use std::io::Write;
 use std::path::PathBuf;
-use std::str;
+use std::str::{self, FromStr};
 
 use anyhow::anyhow;
-use clap::{Args, Error, Parser, Subcommand, ValueEnum};
+use clap::{Args, Error, FromArgMatches, Parser, Subcommand, ValueEnum};
 use clap_repl::reedline::{
     DefaultPrompt, DefaultPromptSegment, FileBackedHistory,
 };
@@ -79,21 +79,34 @@ impl Display for Format {
 
 #[derive(Args, Debug)]
 struct SaveArgs {
+    /// Filepath to which contents should be saved
     path: PathBuf,
+
+    /// Overwrite existing file, if present
     force: Option<bool>
 }
 
 #[derive(Subcommand, Debug)]
 enum DecompilerSubcommand {
+    /// Display currently configured decompiler
     Get,
+
+    /// Set current decompiler
     Set(DecompilerSetArgs),
+
+    /// List available decompilers
     List,
+
+    /// List functions present in binary, using current decompiler
     ListFunctions,
+
+    /// Decompile function, using current decompiler
     Decompile(DecompileArgs),
 }
 
 #[derive(Args, Debug)]
 struct DecompilerSetArgs {
+    /// Decompiler to switch to
     decompiler: Decompiler
 }
 
@@ -155,33 +168,54 @@ struct CompileArgs {
 
 #[derive(Subcommand, Debug)]
 enum ToolSubcommand {
+    /// List available tools
     List,
-    Run(ToolRunArgs)
+
+    /// Print details about tool,
+    Details(ToolArgs),
+
+    /// Execute tool
+    Run(ToolArgs)
 }
 
-#[derive(Args, Debug)]
-struct ToolRunArgs {
+#[derive(Debug, Args)]
+struct ToolArgs {
     tool: Tool
 }
 
-#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord, ValueEnum)]
-enum Tool {
-    Bintoven,
-    ClangFormat,
-    Comcat,
-    Demangle,
+#[derive(Debug, Clone, Copy)]
+struct Tool {
+
 }
 
-impl Display for Tool {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", match self {
-            Self::Bintoven => "Bintoven",
-            Self::ClangFormat => "ClangFormat",
-            Self::Comcat => "Comcat",
-            Self::Demangle => "Demangle"
-        })
+impl FromStr for Tool {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        todo!()
     }
 }
+
+impl ValueEnum for Tool {
+    fn value_variants<'a>() -> &'a [Self] {
+        todo!()
+    }
+
+    fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
+        todo!()
+    }
+}
+
+// impl Display for Tool {
+//     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+//         write!(f, "{}", match self {
+//             Self::Bintoven => "Bintoven",
+//             Self::ClangFormat => "ClangFormat",
+//             Self::Comcat => "Comcat",
+//             Self::Demangle => "Demangle"
+//         })
+//     }
+// }
 
 fn main() {
     let prompt = DefaultPrompt {
@@ -391,45 +425,45 @@ fn handle_compiler(workspace: &mut Workspace, subcommand: &CompilerSubcommand) {
 }
 
 fn handle_tool(workspace: &mut Workspace, subcommand: &ToolSubcommand) {
-    match subcommand {
-        ToolSubcommand::List => 
-            {
-                println!("Available tools:");
-                println!("  {}", Tool::Bintoven);
-                println!("  {}", Tool::ClangFormat);
-                println!("  {}", Tool::Comcat);
-                println!("  {}", Tool::Demangle);
-            }
-        ToolSubcommand::Run(run_args) => {
-            if let Some(workfile) = &mut workspace.active_file {
-                match run_args.tool {
-                    Tool::Bintoven => todo!(),
-                    Tool::ClangFormat => {
-                        match workfile.format {
-                            Format::Bytecode => println!("! This tool cannot be run on bytecode !"),
-                            Format::Source => {
-                                println!("Running tool ...");
-                                let output = clang_format::run(&workfile.contents);
-                                if let Ok(source) = output {
-                                    println!("... Tool completed");
-                                    println!("Replacing working file with new content");
+    // match subcommand {
+    //     ToolSubcommand::List => 
+    //         {
+    //             println!("Available tools:");
+    //             println!("  {}", Tool::Bintoven);
+    //             println!("  {}", Tool::ClangFormat);
+    //             println!("  {}", Tool::Comcat);
+    //             println!("  {}", Tool::Demangle);
+    //         }
+    //     ToolSubcommand::Run(run_args) => {
+    //         if let Some(workfile) = &mut workspace.active_file {
+    //             match run_args.tool {
+    //                 Tool::Bintoven => todo!(),
+    //                 Tool::ClangFormat => {
+    //                     match workfile.format {
+    //                         Format::Bytecode => println!("! This tool cannot be run on bytecode !"),
+    //                         Format::Source => {
+    //                             println!("Running tool ...");
+    //                             let output = clang_format::run(&workfile.contents);
+    //                             if let Ok(source) = output {
+    //                                 println!("... Tool completed");
+    //                                 println!("Replacing working file with new content");
         
-                                    workfile.format = Format::Source;
-                                    workfile.contents = source;
-                                    workfile.modified_since_load = true;
-                                    workfile.modified_since_last_save = true;
-                                } else {
-                                    println!("!! Unexpected error occurred !!");
-                                }
-                            },
-                        }
-                    }
-                    Tool::Comcat => todo!(),
-                    Tool::Demangle => todo!(),
-                }
-            } else {
-                println!("!! No working file to run tool on !!");
-            }
-        },
-    }
+    //                                 workfile.format = Format::Source;
+    //                                 workfile.contents = source;
+    //                                 workfile.modified_since_load = true;
+    //                                 workfile.modified_since_last_save = true;
+    //                             } else {
+    //                                 println!("!! Unexpected error occurred !!");
+    //                             }
+    //                         },
+    //                     }
+    //                 }
+    //                 Tool::Comcat => todo!(),
+    //                 Tool::Demangle => todo!(),
+    //             }
+    //         } else {
+    //             println!("!! No working file to run tool on !!");
+    //         }
+    //     },
+    // }
 }
