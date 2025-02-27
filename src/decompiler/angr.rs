@@ -1,15 +1,14 @@
-use std::{io::Write as _, process::Command, str};
+use std::{env, io::Write as _, process::Command, str};
 
 use anyhow::Result;
 use tempfile;
-
-const ANGR_DIR: &str = "/home/taylor/workspace/vanderbilt/projects/balam-d/re_toolbox/tools/angr";
 
 pub fn list_functions(contents: &Vec<u8>) -> Result<Vec<String>> {
     let mut tfile = tempfile::NamedTempFile::new()?;
     tfile.write_all(contents)?;
 
-    let command_path = ANGR_DIR.to_owned() + "/list_functions.py";
+    let angr_dir = env::var("ANGR_DIR")?;
+    let command_path = angr_dir + "/list_functions.py";
 
     let res = Command::new(command_path)
         .arg(tfile.path())

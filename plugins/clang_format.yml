@@ -1,0 +1,7 @@
+---
+name: clang_format
+input_type: source
+output_type: source
+description: Format source code according to CLANG Microsoft rules
+command: ./tools/clang_format.py
+---

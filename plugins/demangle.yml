@@ -1,8 +1,7 @@
 ---
 name: demangle
-type: tool
 input_type: source
 output_type: source
-description: hello
-command: test
+description: Demangle C++ function names back to human-understandable names
+command: ./tools/demangle.py
 ---

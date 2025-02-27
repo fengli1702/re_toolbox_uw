@@ -1,18 +1,17 @@
-use std::{io::Write as _, process::Command, str};
+use std::{env, io::Write as _, process::Command, str};
 
 use anyhow::Result;
 use tempfile;
-
-const GHIDRA_DIR: &str = "/home/taylor/workspace/vanderbilt/projects/balam-d/re_toolbox/tools/ghidra";
 
 pub fn list_functions(contents: &Vec<u8>) -> Result<Vec<String>> {
     let tdir = tempfile::tempdir()?;
     let mut tfile = tempfile::NamedTempFile::new()?;
     tfile.write_all(contents)?;
 
-    let command_path = GHIDRA_DIR.to_owned() + "/ghidra_11.2.1_PUBLIC/support/analyzeHeadless";
-    let script_path = GHIDRA_DIR.to_owned() + "/ghidra_11.2.1_PUBLIC/Ghidra/Features/Base/ghidra_scripts";
-    let local_script_path = GHIDRA_DIR.to_owned() + "/scripts";
+    let ghidra_dir = env::var("GHIDRA_DIR")?;
+    let command_path = ghidra_dir.clone() + "/ghidra_11.2.1_PUBLIC/support/analyzeHeadless";
+    let script_path = ghidra_dir.clone() + "/ghidra_11.2.1_PUBLIC/Ghidra/Features/Base/ghidra_scripts";
+    let local_script_path = ghidra_dir.clone() + "/scripts";
 
     let res = Command::new(command_path)
         .arg(tdir.path())
@@ -50,9 +49,10 @@ pub fn decompile_function(contents: &Vec<u8>, function_name: &str) -> Result<Vec
     let mut tfile = tempfile::NamedTempFile::new()?;
     tfile.write_all(contents)?;
 
-    let command_path = GHIDRA_DIR.to_owned() + "/ghidra_11.2.1_PUBLIC/support/analyzeHeadless";
-    let script_path = GHIDRA_DIR.to_owned() + "/ghidra_11.2.1_PUBLIC/Ghidra/Features/Base/ghidra_scripts";
-    let local_script_path = GHIDRA_DIR.to_owned() + "/scripts";
+    let ghidra_dir = env::var("GHIDRA_DIR")?;
+    let command_path = ghidra_dir.clone() + "/ghidra_11.2.1_PUBLIC/support/analyzeHeadless";
+    let script_path = ghidra_dir.clone() + "/ghidra_11.2.1_PUBLIC/Ghidra/Features/Base/ghidra_scripts";
+    let local_script_path = ghidra_dir.clone() + "/scripts";
 
     let res = Command::new(command_path)
         .arg(tdir.path())
