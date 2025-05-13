@@ -3,6 +3,7 @@ name: demangle
 input_type: source
 output_type: source
 description: Demangle C++ function names back to human-understandable names
-type: bash
-command: ./tools/demangle.py
+type: python
+workdir: tools/demangle
+script: demangle.py
 ---

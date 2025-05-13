@@ -134,7 +134,24 @@ impl Specialization {
                 }
             }
             Self::Python{workdir, script} => {
-                todo!()
+                let mut command = Command::new("pipenv");
+                command
+                    .current_dir(workdir)
+                    .arg("run")
+                    .arg("python")
+                    .arg(script);
+
+                if let Some(file) = input_file {
+                    command.arg(file);
+                }
+
+                match command.output() {
+                    Ok(resp) => {
+                        println!("Tool completed with status: {:?}", resp.status);
+                        Ok(String::from_utf8(resp.stdout)?)
+                    }
+                    Err(e) => Err(anyhow!("Problem executing tool: {:?}", e))
+                }            
             }
         }
     }
