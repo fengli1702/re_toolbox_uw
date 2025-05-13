@@ -1,0 +1,9 @@
+---
+name: ComCat
+input_type: source
+output_type: source
+description: Automatically comment a file
+type: python
+workdir: tools/comcat
+script: ComCat.py
+---

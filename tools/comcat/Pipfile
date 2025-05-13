@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+libclang = "==18.1.1"
+openai = "==0.28.1"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
