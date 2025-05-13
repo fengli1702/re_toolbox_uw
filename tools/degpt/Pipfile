@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+cinspector = { file = "./cinspector", editable = true }
+openai = "==0.28.1"
+backoff = "==2.2.1"
+tiktoken = "==0.2.0"
+python-levenshtein = "==0.27.1"
+tree-sitter = "==0.20.4"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"

@@ -1,0 +1,9 @@
+---
+name: DeGPT
+input_type: source
+output_type: source
+description: Cleanup decompiled code via LLM
+type: python
+workdir: tools/degpt
+script: run_degpt.py
+---

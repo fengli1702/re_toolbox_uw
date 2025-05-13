@@ -1,0 +1,58 @@
+[
+    {
+        "type": "referee",
+        "name": "direction",
+        "prompt": {
+            "role": "user",
+            "content": "How can the following C function be improved to better match the original source code in terms of readability, structure, and variable naming? Focus on making the generated code semantically closer to the original by refining the logic, renaming variables to be more intuitive, and simplifying complex structures. Ensure that the core functionality remains unchanged. List each suggestion one by one without showing the code. No explanation needed.\n{code}"
+        }
+    },
+    {
+        "type": "advisor",
+        "name": "add_comment",
+        "prompt": {
+            "role": "user",
+            "content": "Optimize the following C code to enhance readability and maintainability. Add meaningful comments where necessary to clarify the intent, rename variables to closely match their original purpose, and simplify any complex or redundant logic. Ensure that the code remains functionally equivalent to the original source. Limit changes to essential improvements only. No explanation needed.\n{code}"
+        }
+    },
+    {
+        "type": "advisor",
+        "name": "rename_var",
+        "prompt": {
+            "role": "user",
+            "content": "Rename the variables in the following C code to better reflect their purpose, improving readability and clarity to make the code closer to the original source. Output the old name and its new name in a JSON dictionary. Do not use any markdown formatting. For example, use {{\"old_name\": \"new_name\"}} to represent replacing the variable name \"old_name\" with \"new_name\". Ensure consistency across the code. No explanation needed.\n{code}"
+        }
+    },
+    {
+        "type": "advisor",
+        "name": "rename_func",
+        "prompt": {
+            "role": "user",
+            "content": "Suggest a more descriptive name for the following C function that aligns with its functionality and intent, making it closer to the original source code. Ensure that the new name is concise and accurately reflects the function’s purpose. Output the new function name in double quotes, e.g., \"new_name\". No explanation needed.\n{code}"
+        }
+    },
+    {
+        "type": "advisor",
+        "name": "remove_unnecessary",
+        "prompt": {
+            "role": "user",
+            "content": "Simplify the structure of the following C function by reducing unnecessary nesting, eliminating redundant or unnecessary code, and aligning the structure more closely with the original source code. Ensure that the function's logic and intended behavior remain intact. Limit changes to those that enhance clarity and maintainability. No additional explanation is required.\n{code}"
+        }
+    },
+    {
+        "type": "referee",
+        "name": "need",
+        "prompt": {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \n{code}"
+        }
+    },
+    {
+        "type": "advisor",
+        "name": "check_error_handling",
+        "prompt": {
+            "role": "user",
+            "content": "Review the following C code and suggest improvements for error handling, such as adding boundary checks, handling potential memory allocation failures, and ensuring robust error reporting. Ensure that the proposed enhancements do not alter the intended functionality. No explanation required.\n{code}"
+        }
+    }
+]

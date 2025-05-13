@@ -1,0 +1,428 @@
+[
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me rename the variables for the code snippet in the following C code. Output the old name and its new name in a *single* JSON dictionary. Do not use any markdown formatting. For example, use {\"old_name\": \"new_name\"} to represent replace the variable name \"old_name\" with \"new_name\". No explanation. \\n \n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci numbers for (param_1 - 1) and (param_1 - 2)\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "{\"param_1\": \"input_num\", \"Fibon\": \"calculateFibonacci\"}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me add code comments for the code snippet in the following C code. No explanation.\nint Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        },
+        {
+            "role": "assistant",
+            "content": "```c\n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci numbers for (param_1 - 1) and (param_1 - 2)\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n```"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Simplify the following C function by removing redundant variables and unnecessary code. No explanation. Don't change the variable types and function semantics. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "int Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "Yes, Yes, Yes"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me rename the variables for the code snippet in the following C code. Output the old name and its new name in a *single* JSON dictionary. Do not use any markdown formatting. For example, use {\"old_name\": \"new_name\"} to represent replace the variable name \"old_name\" with \"new_name\". No explanation. \\n \n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci of (param_1 - 1) and (param_1 - 2)\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "{\"param_1\": \"n\"}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me add code comments for the code snippet in the following C code. No explanation.\nint Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        },
+        {
+            "role": "assistant",
+            "content": "```c\n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci of (param_1 - 1) and (param_1 - 2)\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n```"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Simplify the following C function by removing redundant variables and unnecessary code. No explanation. Don't change the variable types and function semantics. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "int Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "Yes, Yes, Yes"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me rename the variables for the code snippet in the following C code. Output the old name and its new name in a *single* JSON dictionary. Do not use any markdown formatting. For example, use {\"old_name\": \"new_name\"} to represent replace the variable name \"old_name\" with \"new_name\". No explanation. \\n \n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci of (param_1 - 1) and (param_1 - 2)\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "{\"param_1\": \"n\"}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me add code comments for the code snippet in the following C code. No explanation.\nint Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        },
+        {
+            "role": "assistant",
+            "content": "```c\n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci of (param_1 - 1) and (param_1 - 2)\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n```"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Simplify the following C function by removing redundant variables and unnecessary code. No explanation. Don't change the variable types and function semantics. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "int Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "Yes, Yes, Yes"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me rename the variables for the code snippet in the following C code. Output the old name and its new name in a *single* JSON dictionary. Do not use any markdown formatting. For example, use {\"old_name\": \"new_name\"} to represent replace the variable name \"old_name\" with \"new_name\". No explanation. \\n \n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci numbers for param_1-1 and param_1-2\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "{\"param_1\": \"n\"}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me add code comments for the code snippet in the following C code. No explanation.\nint Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        },
+        {
+            "role": "assistant",
+            "content": "```c\n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci numbers for param_1-1 and param_1-2\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n```"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Simplify the following C function by removing redundant variables and unnecessary code. No explanation. Don't change the variable types and function semantics. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "int Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "Yes, Yes, Yes"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me rename the variables for the code snippet in the following C code. Output the old name and its new name in a *single* JSON dictionary. Do not use any markdown formatting. For example, use {\"old_name\": \"new_name\"} to represent replace the variable name \"old_name\" with \"new_name\". No explanation. \\n \n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci numbers for (param_1 - 1) and (param_1 - 2)\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "{\"param_1\": \"input_value\", \"Fibon\": \"calculateFibonacci\"}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me add code comments for the code snippet in the following C code. No explanation.\nint Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        },
+        {
+            "role": "assistant",
+            "content": "```c\n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci numbers for (param_1 - 1) and (param_1 - 2)\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n```"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Simplify the following C function by removing redundant variables and unnecessary code. No explanation. Don't change the variable types and function semantics. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "int Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "Yes, Yes, Yes"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me rename the variables for the code snippet in the following C code. Output the old name and its new name in a *single* JSON dictionary. Do not use any markdown formatting. For example, use {\"old_name\": \"new_name\"} to represent replace the variable name \"old_name\" with \"new_name\". No explanation. \\n \n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci numbers for (param_1 - 1) and (param_1 - 2)\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "{\"param_1\": \"input_num\", \"Fibon\": \"calculateFibonacci\"}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me add code comments for the code snippet in the following C code. No explanation.\nint Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        },
+        {
+            "role": "assistant",
+            "content": "```c\n// Function to calculate the Fibonacci number for a given input\nint Fibon(int param_1) {\n    // Base case: if input is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of Fibonacci numbers for (param_1 - 1) and (param_1 - 2)\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n```"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Simplify the following C function by removing redundant variables and unnecessary code. No explanation. Don't change the variable types and function semantics. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "int Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "Yes, Yes, Yes"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me rename the variables for the code snippet in the following C code. Output the old name and its new name in a *single* JSON dictionary. Do not use any markdown formatting. For example, use {\"old_name\": \"new_name\"} to represent replace the variable name \"old_name\" with \"new_name\". No explanation. \\n \\*\n// Function to calculate the Fibonacci sequence\nint Fibon(int param_1) {\n    // Base case: if param_1 is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of the two previous Fibonacci numbers\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n*\\ \n \nint Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        },
+        {
+            "role": "assistant",
+            "content": "{\"Fibon\": \"calculateFibonacci\"}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me add code comments for the code snippet in the following C code. No explanation.\nint Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        },
+        {
+            "role": "assistant",
+            "content": "```c\n// Function to calculate the Fibonacci sequence\nint Fibon(int param_1) {\n    // Base case: if param_1 is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of the two previous Fibonacci numbers\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n```"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Simplify the following C function by removing redundant variables and unnecessary code. No explanation. Don't change the variable types and function semantics. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "int Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "Yes, Yes, Yes"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me rename the variables for the code snippet in the following C code. Output the old name and its new name in a *single* JSON dictionary. Do not use any markdown formatting. For example, use {\"old_name\": \"new_name\"} to represent replace the variable name \"old_name\" with \"new_name\". No explanation. \\n \n// Function to calculate the Fibonacci sequence\nint Fibon(int param_1) {\n    // Base case: if param_1 is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of the previous two Fibonacci numbers\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "{\"param_1\": \"n\"}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Help me add code comments for the code snippet in the following C code. No explanation.\nint Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        },
+        {
+            "role": "assistant",
+            "content": "```c\n// Function to calculate the Fibonacci sequence\nint Fibon(int param_1) {\n    // Base case: if param_1 is 1 or 2, return 1\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        // Recursive case: return the sum of the previous two Fibonacci numbers\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}\n```"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Simplify the following C function by removing redundant variables and unnecessary code. No explanation. Don't change the variable types and function semantics. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "int Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    } else {\n        return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n    }\n}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "Yes, Yes, Yes"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Rename the variables in the following C code to better reflect their purpose, improving readability and clarity to make the code closer to the original source. Output the old name and its new name in a JSON dictionary. Do not use any markdown formatting. For example, use {\"old_name\": \"new_name\"} to represent replacing the variable name \"old_name\" with \"new_name\". Ensure consistency across the code. No explanation needed.\n\n// Function to calculate the nth Fibonacci number\nint fibonacci(int n) {\n    // Base cases for Fibonacci sequence\n    if (n == 1 || n == 2) {\n        return 1;\n    }\n    \n    // Recursive calculation of Fibonacci number\n    return fibonacci(n - 1) + fibonacci(n - 2);\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "{\n\"n\": \"index\",\n\"fibonacci\": \"calculateFibonacci\"\n}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Optimize the following C code to enhance readability and maintainability. Add meaningful comments where necessary to clarify the intent, rename variables to closely match their original purpose, and simplify any complex or redundant logic. Ensure that the code remains functionally equivalent to the original source. Limit changes to essential improvements only. No explanation needed.\nint Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    }\n    \n    return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n}"
+        },
+        {
+            "role": "assistant",
+            "content": "```c\n// Function to calculate the nth Fibonacci number\nint fibonacci(int n) {\n    // Base cases for Fibonacci sequence\n    if (n == 1 || n == 2) {\n        return 1;\n    }\n    \n    // Recursive calculation of Fibonacci number\n    return fibonacci(n - 1) + fibonacci(n - 2);\n}\n```"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Simplify the structure of the following C function by reducing unnecessary nesting, eliminating redundant or unnecessary code, and aligning the structure more closely with the original source code. Ensure that the function's logic and intended behavior remain intact. Limit changes to those that enhance clarity and maintainability. No additional explanation is required.\nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "int Fibon(int param_1) {\n    if ((param_1 == 1) || (param_1 == 2)) {\n        return 1;\n    }\n    \n    return Fibon(param_1 - 1) + Fibon(param_1 - 2);\n}"
+        }
+    ],
+    [
+        {
+            "role": "user",
+            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \nint Fibon(int param_1) {\n    int iVar1;\n    int iVar2;\n    if ((param_1 == 1) || (param_1 == 2)) {\n        iVar2 = 1;\n    } else {\n        iVar1 = Fibon(param_1 + -1);\n        iVar2 = Fibon(param_1 + -2);\n        iVar2 = iVar2 + iVar1;\n    }\n    return iVar2;\n}\n"
+        },
+        {
+            "role": "assistant",
+            "content": "Yes, Yes, Yes"
+        }
+    ]
+]
