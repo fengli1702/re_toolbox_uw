@@ -59,9 +59,8 @@ class QueryChatGPT:
         self.chat_context.append({"role": "user", "content": prompt})
         self.chat_history.append({"role": "user", "content": prompt})
 
-        # 读取 API Key 和模型
         openai.api_key = config.api_key
-        model = model or config.model  # 如果 model 为空，则使用默认 MODEL
+        model = model or config.model  
 
         response = openai.ChatCompletion.create(
             model=model,

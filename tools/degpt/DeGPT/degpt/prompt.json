@@ -4,7 +4,7 @@
         "name": "direction",
         "prompt": {
             "role": "user",
-            "content": "How can the following C function be improved to better match the original source code in terms of readability, structure, and variable naming? Focus on making the generated code semantically closer to the original by refining the logic, renaming variables to be more intuitive, and simplifying complex structures. Ensure that the core functionality remains unchanged. List each suggestion one by one without showing the code. No explanation needed.\n{code}"
+            "content": "For better readability and simplicity, what can be done for the following C language functions? List them one by one. Don't show the code. {code}"
         }
     },
     {
@@ -12,7 +12,7 @@
         "name": "add_comment",
         "prompt": {
             "role": "user",
-            "content": "Optimize the following C code to enhance readability and maintainability. Add meaningful comments where necessary to clarify the intent, rename variables to closely match their original purpose, and simplify any complex or redundant logic. Ensure that the code remains functionally equivalent to the original source. Limit changes to essential improvements only. No explanation needed.\n{code}"
+            "content": "Help me add code comments for the code snippet in the following C code. No explanation.\n{code}"
         }
     },
     {
@@ -20,7 +20,7 @@
         "name": "rename_var",
         "prompt": {
             "role": "user",
-            "content": "Rename the variables in the following C code to better reflect their purpose, improving readability and clarity to make the code closer to the original source. Output the old name and its new name in a JSON dictionary. Do not use any markdown formatting. For example, use {{\"old_name\": \"new_name\"}} to represent replacing the variable name \"old_name\" with \"new_name\". Ensure consistency across the code. No explanation needed.\n{code}"
+            "content": "Help me rename the variables for the code snippet in the following C code. Output the old name and its new name in a *single* JSON dictionary. Do not use any markdown formatting. For example, use {{\"old_name\": \"new_name\"}} to represent replace the variable name \"old_name\" with \"new_name\". No explanation. \\n {code}"
         }
     },
     {
@@ -28,7 +28,7 @@
         "name": "rename_func",
         "prompt": {
             "role": "user",
-            "content": "Suggest a more descriptive name for the following C function that aligns with its functionality and intent, making it closer to the original source code. Ensure that the new name is concise and accurately reflects the function’s purpose. Output the new function name in double quotes, e.g., \"new_name\". No explanation needed.\n{code}"
+            "content": "Rename the following C functions. No explanation. Just output new name with quote, like \"new name\".\n{code}"
         }
     },
     {
@@ -36,7 +36,31 @@
         "name": "remove_unnecessary",
         "prompt": {
             "role": "user",
-            "content": "Simplify the structure of the following C function by reducing unnecessary nesting, eliminating redundant or unnecessary code, and aligning the structure more closely with the original source code. Ensure that the function's logic and intended behavior remain intact. Limit changes to those that enhance clarity and maintainability. No additional explanation is required.\n{code}"
+            "content": "Simplify the following C functions by removing redundant variables and unnecessary code. No explanation. Don't change the variable types and function semantics.{code}"
+        }
+    },
+    {
+        "type": "advisor",
+        "name": "reconstruct_struct", 
+        "prompt": {
+            "role": "user",
+            "content": "Analyze the following C functions, if they contain unclear pointer access, convert to simplified, human-like C code. Prefer readable-style over low-level and definitely do not change any function call or variable, or alter function semantics or add unexisted check. No explanation. \n{code}"
+        }
+    },
+    {
+        "type": "advisor",
+        "name": "cf_simplify",
+        "prompt": {
+            "role": "user",
+            "content": "Analyze the control flow of the following C functions. Refactor complex or non-standard control flow structures into equivalent C constructs and definitely do not alter function semantics or add unexisted check. No explanation. \n{code}"
+        }
+    },
+    {
+        "type": "advisor",
+        "name": "reconstruct_lib", 
+        "prompt": {
+            "role": "user",
+            "content": "Analyze the following C functions. Identify any function call that manually implements functionality equivalent to a standard C library function. If so, output the old name and its new name in a *single* JSON dictionary. Do not use any markdown formatting. For example, use {{\"old_name\": \"new_name\"}} to represent replace the function call name \"old_name\" with \"new_name\". No explanation. \\n {code}"
         }
     },
     {
@@ -44,15 +68,8 @@
         "name": "need",
         "prompt": {
             "role": "user",
-            "content": "Do you think the following code needs structure simplification, comment appending, and variable renaming? Answer three yes or no in order. No explanation. \n{code}"
-        }
-    },
-    {
-        "type": "advisor",
-        "name": "check_error_handling",
-        "prompt": {
-            "role": "user",
-            "content": "Review the following C code and suggest improvements for error handling, such as adding boundary checks, handling potential memory allocation failures, and ensuring robust error reporting. Ensure that the proposed enhancements do not alter the intended functionality. No explanation required.\n{code}"
+            "content": "Do you think the following code needs structure simplification, comment appending, variable renaming, unclear pointer access, unclear control flow refactoring, and unclear library call? Answer six yes or no in order. No explanation. \n{code}"
         }
     }
+    
 ]
