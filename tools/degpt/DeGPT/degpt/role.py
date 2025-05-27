@@ -99,6 +99,10 @@ class DType(str, Enum):
     ADD_COMMENT = 'ADD_COMMENT'
     RENAME_VAR = 'RENAME_VAR'
     SIMPLIFY = 'SIMPLIFY'
+
+    STRUCT_REC = 'STRUCT_REC'
+    CF_SIMPLIFY = 'CF_SIMPLIFY'
+    LIB_REC = 'LIB_REC'
     ALL = 'ALL'
 
 
@@ -129,6 +133,9 @@ class Advisor(Role):
             DType.ADD_COMMENT: self._add_comment,
             DType.RENAME_VAR: self._rename_var,
             DType.SIMPLIFY: self._simplify,
+            DType.STRUCT_REC: self._struct_rec,
+            DType.CF_SIMPLIFY: self._cf_simplify,
+            DType.LIB_REC: self._lib_rec,
         }
 
     def get_advice(self, code: str, dtype: DType) -> Tuple[str, Optional[str]]:
@@ -243,11 +250,70 @@ class Advisor(Role):
         assert (isinstance(response, str))
         response = response_filter(response)
         # here we extract the function to avoid to additional info from ChatGPT
-        try:
-            response = CCode(response).get_by_type_name('function_definition')[0].src
-        except Exception as e:
-            print(e)
+        # try:
+        #     response = CCode(response).get_by_type_name('function_definition')[0].src
+        # except Exception as e:
+        #     print(e)
         return (response, response)
+    
+
+    def _struct_rec(self, code: str) -> Tuple[str, str]:
+        """
+        Reconstruct the struct
+        """
+        prompt = get_prompt('reconstruct_struct', 'advisor')
+        assert(prompt)
+        q = QueryChatGPT()
+        q.insert_system_prompt('You provide the programming suggestions.')
+        response = q.query(prompt['content'].format(code=code))
+        assert (isinstance(response, str))
+        response = response_filter(response)
+        return (response, response)
+    
+    def _cf_simplify(self, code: str) -> Tuple[str, str]:
+        """
+        Simplify the control flow
+        """
+        prompt = get_prompt('cf_simplify', 'advisor')
+        assert(prompt)
+        q = QueryChatGPT()
+        q.insert_system_prompt('You provide the programming suggestions.')
+        response = q.query(prompt['content'].format(code=code))
+        assert (isinstance(response, str))
+        response = response_filter(response)
+        return (response, response)
+    
+
+    def _lib_rec(self, code: str, response: Optional[str] = None) -> Tuple[str, str]:
+        """
+        Reconstruct the library call
+        """
+        prompt = get_prompt('reconstruct_lib', 'advisor')
+
+        assert (prompt)
+        if not response:
+            q = QueryChatGPT()
+            q.insert_system_prompt('You provide the programming suggestions.')
+            response = q.query(prompt['content'].format(code=code))
+            
+        assert (isinstance(response, str))
+
+        if "':" in response:
+            response = response.replace("'", '"')
+
+        if not is_valid_json(response):
+            logger.warning(f"Fail to rename variables since the response is not valid JSON: {response}")
+            return (code, response)
+
+        old_new_dic = json.loads(response)
+
+        try:
+            code = self.replace_variable_name(old_new_dic, code)
+        except Exception as e:
+            logger.warning(e)
+            return (code, response)
+        return (code, response)
+
 
 
 class Operator(Role):
@@ -275,6 +341,13 @@ class Operator(Role):
         elif dtype == DType.RENAME_VAR:
             return advised_code
         elif dtype == DType.SIMPLIFY:
+            return advised_code
+        
+        elif dtype == DType.STRUCT_REC:
+            return advised_code
+        elif dtype == DType.CF_SIMPLIFY:
+            return advised_code
+        elif dtype == DType.LIB_REC:
             return advised_code
 
             """ TODO: rewrite semantic comparison for better accuracy
@@ -329,13 +402,19 @@ class Referee(Role):
         rtn = []
         pattern = r'\b(?:Yes|yes|No|no)\b'
         matches = re.findall(pattern, response)
-        assert (len(matches) == 3)
+        assert (len(matches) == 6)
         if matches[0] in ['Yes', 'yes']:
             rtn.append(DType.SIMPLIFY)
         if matches[1] in ['Yes', 'yes']:
             rtn.append(DType.ADD_COMMENT)
         if matches[2] in ['Yes', 'yes']:
             rtn.append(DType.RENAME_VAR)
+        if matches[3] in ['Yes', 'yes']:
+            rtn.append(DType.STRUCT_REC)
+        if matches[4] in ['Yes', 'yes']:
+            rtn.append(DType.CF_SIMPLIFY)
+        # if matches[5] in ['Yes', 'yes']:
+        #     rtn.append(DType.LIB_REC)
         return rtn
 
 
@@ -379,6 +458,9 @@ class RoleModel:
             DType.SIMPLIFY: 0,  # highest priority
             DType.ADD_COMMENT: 0.5,
             DType.RENAME_VAR: 1,
+            DType.STRUCT_REC: 2,
+            DType.CF_SIMPLIFY: 0.1,
+            DType.LIB_REC: 3,
         }
 
         sorted_directions = list()
@@ -635,10 +717,10 @@ def resume_from_dic(dir_path: str, workflow: str):
 
 def get_optimized_from_dic(dic) -> str:
     opts = dic['optimization']
-    opt_order = ['SIMPLIFY', 'ADD_COMMENT', 'RENAME_VAR']
+    opt_order = ['SIMPLIFY', 'CF_SIMPLIFY', 'ADD_COMMENT', 'RENAME_VAR', 'STRUCT_REC', 'LIB_REC']
     out = dic['decompiler_output']
     for _ in opt_order:
-        if opts[_]['status'].startswith('FAIL'):
+        if _ not in opts or opts[_]['status'].startswith('FAIL'):
             return out
         else:
             out = opts[_]['output']
