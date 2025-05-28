@@ -1,0 +1,17 @@
+# located in  C:\tools\klee\Pipfile (will be copied to /app/tools/klee/Pipfile)
+
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+
+# noneRUN pip3 install  --no-cache-dir lit wllvm tabulate
+lit
+wllvm
+tabulate
+
+[dev-packages]
+
+[requires]
