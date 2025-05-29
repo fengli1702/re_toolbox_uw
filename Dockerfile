@@ -119,6 +119,8 @@ ENV PLUGIN_PATH=/app/plugins
 ENV GHIDRA_DIR=/app/tools/ghidra
 ENV ANGR_DIR=/app/tools/angr
 # KLEE and Z3 'make install' should add their binaries to the system PATH.
-
+RUN chmod -R +x /app/tools
+RUN chmod -R +x /app/examples
+RUN chmod +x $(which klee)
 # Stage 10: Define the default command
 CMD [ "/bin/bash", "-c", "/app/target/debug/re_toolbox" ]
