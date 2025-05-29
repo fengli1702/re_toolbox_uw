@@ -5,7 +5,7 @@ import tempfile
 import subprocess
 
 binary_path = sys.argv[1]
-sub = subprocess.run(["clang-format", "--style", "Microsoft", binary_path], capture_output=True)
+sub = subprocess.run(["clang-format", "--style", "Microsoft", binary_path])
 if sub.returncode == 0:
     contents = sub.stdout
     with tempfile.NamedTemporaryFile(mode='wb', delete=False) as fp:
